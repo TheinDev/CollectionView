@@ -18,17 +18,24 @@ UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var uiCel = UICollectionViewCell();
+        let uiCel = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath)
         uiCel.backgroundColor = UIColor.green
         return uiCel;
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }
+    
+    
+    
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = self;
+        collectionView.delegate = self;
         // Do any additional setup after loading the view.
     }
 
